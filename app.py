@@ -1,4 +1,3 @@
-
 from flask import Flask, request, render_template, redirect, url_for
 import pickle, gzip
 import joblib
@@ -11,7 +10,6 @@ model = pickle.load(open('model.sav', 'rb'))
 # HTML File to get user input
 @app.route('/')
 def index():
-    print("Hello")
     return render_template("index.html")
 
 
@@ -48,9 +46,10 @@ def predict():
 
     return render_template('index.html',prediction_text='Patient has {}'.format(res_Val))
 
+#
+# return render_template('forest_fire.html',
+#                        pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(),
+#                        bhai="Your Forest is Safe for now")
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
